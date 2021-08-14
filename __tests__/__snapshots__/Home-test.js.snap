@@ -11,7 +11,13 @@ exports[`Home snapShot 1`] = `
     }
   }
 >
-  <Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+      }
+    }
+  >
     Home
   </Text>
 </RCTSafeAreaView>
