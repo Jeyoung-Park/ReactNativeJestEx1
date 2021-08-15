@@ -8,8 +8,8 @@ it('function and state test care', () => {
   let HomeData = renderer.create(<Home />).getInstance();
 
   HomeData.change(2);
-  //   console.log(HomeData);
+  // console.log(HomeData);
 
-  //   expect(HomeData.change(2)).toEqual(20);
+  // expect(HomeData.change(2)).toEqual(20);1
   expect(HomeData.state.data).toEqual(20);
 });
