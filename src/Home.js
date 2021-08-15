@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, Text, TextInput, View} from 'react-native';
+import Users from './users';
 
 // const Home = () => {
 //   const [data, setData] = useState('test');
@@ -23,6 +24,12 @@ class Home extends React.Component {
     this.state = {
       data: 'test',
     };
+  }
+
+  componentDidMount() {
+    Users.all().then(data => {
+      console.warn('check api data, ', data);
+    });
   }
 
   change(x) {

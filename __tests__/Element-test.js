@@ -1,25 +1,18 @@
-import 'react-native';
-import React from 'react';
-import Home from '../src/Home';
+import {expect, it} from '@jest/globals';
+import Users from '../src/users';
 
-import renderer from 'react-test-renderer';
-import {it} from '@jest/globals';
+it('Api Test', async function () {
+  global.fetch = jest.fn().mockImplementation(() => {
+    let p = new Promise((resolve, reject) => {
+      resolve({
+        json: function () {
+          return {Id: 1};
+        },
+      });
+    });
+    return p;
+  });
 
-let findElement = function (tree, element) {
-//   console.warn(tree.children);
-
-  let result;
-
-  for (let node in tree.children) {
-    if (tree.children[node].props.testID === element) {
-      result = true;
-    }
-  }
-  return result;
-};
-
-it('find Element', () => {
-  let tree = renderer.create(<Home />).toJSON();
-
-  expect(findElement(tree, 'username')).toBeDefined();
+  const response = await Users.all();
+  expect(response.Id).toBe(1);
 });
